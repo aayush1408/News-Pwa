@@ -11,6 +11,16 @@ window.addEventListener('load', async function () {
     });
 });
 
+if ('serviceWorker' in navigator) {
+    try {
+        navigator.serviceWorker.register('sw.js');
+        console.log('Sw registered');
+    }
+    catch (error) {
+        console.log('Sw reg failed');
+    }
+}
+
 async function updateSources() {
     const res = await fetch('https://newsapi.org/v2/sources?apiKey=0bcf0fa4e36242efadfc393fa76b0ae0');
     const json = await res.json();
