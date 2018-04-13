@@ -2,7 +2,7 @@ const staticAssets = [
     './',
     './style.css',
     './app.js',
-    './fallback.json'
+    './app.html'
 ];
 
 self.addEventListener('install', async event => {
@@ -37,6 +37,6 @@ async function networkFirst(req) {
     }
     catch (error) {
         const cachedResponse = await cache.match(req);
-        return cachedResponse || await caches.match('./fallback.json');
+        return cachedResponse || await caches.match('./app.html');
     }
 }
